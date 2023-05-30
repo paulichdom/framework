@@ -4,7 +4,8 @@ const user = new User({});
 
 user.set({ name: 'newName'});
 
-const name = user.get('name');
-const age = user.get('age');
+user.on('change', () => {console.log('change#1')})
+user.on('change', () => {console.log('change#2')})
+user.on('move', () => {console.log('mooooooving')})
 
-console.log({ name, age });
+user.trigger('change')
